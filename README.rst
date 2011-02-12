@@ -1,6 +1,6 @@
 This Sphinx_ 1.0 extension executes programs during the build step and
 includes their screenshot into the documentation.
-GUI version of the :py:mod:`sphinxcontrib.programoutput` extension.
+GUI version of the `sphinxcontrib.programoutput`_ extension.
 
 
 home: https://github.com/ponty/sphinxcontrib-programscreenshot
@@ -78,5 +78,5 @@ Uninstall
 .. _PIL: http://www.pythonware.com/library/pil/
 .. _pyscreenshot: https://github.com/ponty/pyscreenshot
 .. _PyVirtualDisplay: https://github.com/ponty/PyVirtualDisplay
-
+.. _`sphinxcontrib.programoutput`: http://packages.python.org/sphinxcontrib-programoutput/
 

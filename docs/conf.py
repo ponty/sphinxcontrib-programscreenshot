@@ -18,14 +18,16 @@ logging.basicConfig(level=logging.DEBUG)
 needs_sphinx = '1.0'
 
 extensions = [
-            #'sphinx.ext.intersphinx',
+              'sphinx.ext.intersphinx',
               'sphinxcontrib.programscreenshot',
              #'sphinx.ext.autodoc',
              #'sphinxcontrib.programoutput',
              #'sphinx.ext.graphviz',
              #'sphinx.ext.autosummary',
               ]
-intersphinx_mapping = {'http://docs.python.org/': None}
+intersphinx_mapping = {'http://docs.python.org/': None,
+'http://packages.python.org/sphinxcontrib-programoutput/' : None,
+}
 
 source_suffix = '.rst'
 master_doc = 'index'

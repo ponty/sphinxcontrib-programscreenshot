@@ -68,7 +68,7 @@ setup(
     description=DESCRIPTION,
     long_description=open('README.rst', 'r').read(),
     classifiers=classifiers,
-    keywords='screenshot',
+    keywords='sphinx screenshot',
     author='ponty',
     #author_email='zy@gmail.com',
     url=URL,
