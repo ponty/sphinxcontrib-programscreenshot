@@ -2,6 +2,18 @@
 Usage
 ======
 
+Configuration
+---------------
+
+Add ``sphinxcontrib.programscreenshot`` to ``extensions`` list in ``conf.py``::
+
+		extensions = [
+		              'sphinx.ext.autodoc',
+		              'sphinxcontrib.programscreenshot',
+		              ]
+
+
+
 Basic
 -------
 
@@ -50,10 +62,20 @@ The above snippet would render like this:
      :stdout:
      :stderr:
 
-If nothing happens, after timeout (60 sec) assertion is raised.
+If nothing happens, after timeout (:timeout:) assertion is raised.
 
 Options
 -------
+
+---------
+timeout
+---------
+
+If nothing happens, after timeout (default 60 sec) assertion is raised, 
+you can change it with this option::
+
+      .. program-screenshot:: xmessage timeout
+            :timeout:  120
 
 -------
 prompt
@@ -101,21 +123,34 @@ The above snippet would render like this:
 wait
 --------------
 
-Use ``wait`` to set waiting time before taking screenshot. Default is 0.3 sec::
+Use ``wait`` to wait at least N seconds after first window is displayed.
+This can be used to skip splash or loading screen.
 
-    .. program-screenshot:: xmessage wait
+``update-manager`` is loading data by start (without ``wait``):: 
+    
+    .. program-screenshot:: update-manager
          :prompt:
-         :stdout:
-         :stderr:
-         :wait: 3
+         :scale: 50 %
 
 The above snippet would render like this:
 
-.. program-screenshot:: xmessage wait
-     :prompt:
-     :stdout:
-     :stderr:
-     :wait: 3
+.. program-screenshot:: update-manager
+         :prompt:
+         :scale: 50 %
+
+``update-manager`` after loading data (with ``wait``):: 
+
+    .. program-screenshot:: update-manager
+         :prompt:
+         :scale: 50 %
+         :wait: 5
+
+The above snippet would render like this:
+
+.. program-screenshot:: update-manager
+         :prompt:
+         :scale: 50 %
+         :wait: 5
 
 --------------
 screen
@@ -183,7 +218,3 @@ The above snippet would render like this:
 
 
 
-Configuration
----------------
-
-Nothing yet

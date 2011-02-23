@@ -11,4 +11,3 @@ include pavement.py
 include paver-minilib.zip
 
 
-include .version

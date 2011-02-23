@@ -4,6 +4,7 @@ from docutils import nodes
 from docutils.parsers.rst.directives import flag, unchanged
 from easyprocess import EasyProcess
 from pyvirtualdisplay import Display
+from pyvirtualdisplay.smartdisplay import SmartDisplay
 import Image
 import ImageChops
 import docutils.parsers.rst.directives.images
@@ -21,7 +22,7 @@ import time
 
 """
 
-__version__ = '0.0.0'
+__version__ = '0.0.2'
    
 log = logging.getLogger(__name__)
 log.debug('sphinxcontrib.programscreenshot (version:%s)' % __version__)
@@ -44,54 +45,34 @@ def autocrop(im, bgcolor):
         return im.crop(bbox)
     return None # no contents
 
-def prog_shot(cmd, f, wait=1, timeout=60, screen_size=(1024, 768), repeat_if_empty=True, repeat_time=1, enable_crop=True, visible=False, bgcolor='white'):
+class ProgramScreenshotError(Exception):
+    pass
+
+def prog_shot(cmd, f, wait, timeout, screen_size, visible, bgcolor):
     '''start process in headless X and create screenshot after 'wait' sec.
     Repeats screenshot until it is not empty if 'repeat_if_empty'=True.
 
-    :param enable_crop: True -> crop screenshot '''
-    disp = Display(visible=visible, size=screen_size, bgcolor=bgcolor).start()
+    wait: wait at least N seconds after first window is displayed,
+    it can be used to skip splash screen 
 
-    # display background color
-    #imbg = Image.new('RGB', (1000,1000), bgcolor)
-    #imbg.show()
-
-    proc = EasyProcess(cmd).start()
-
-    t = 0
-    sleep_time = wait
-    while 1:
-        log.debug('sleeping %s secs' % str(sleep_time))
-        time.sleep(sleep_time)
-        t += sleep_time
-        pyscreenshot.grab_to_file(f)
-        im_in = Image.open(f)
-        if enable_crop:
-            im_out = autocrop(im_in, bgcolor=bgcolor)
-        else:
-            if im_in.getbbox():
-                im_out = im_in
-        if im_out:
-            break
-        path.path(f).remove()
-        if not repeat_if_empty:
-            break
-        sleep_time = repeat_time
-        if t > timeout:
-            log.debug('timeout')
-            disp.stop()
-            assert 0, 'timeout cmd:"%s"' % cmd
-            break
-
-        log.debug('screenshot is empty, next try..')
-
-    proc.stop()
-    disp.stop()
-
-    if im_out:
-        im_out.save(f)
-    else:
-        log.debug('screenshot is empty!')
+    :param enable_crop: True -> crop screenshot 
+    :param wait: int 
+    '''
+    disp = SmartDisplay(visible=visible, size=screen_size, bgcolor=bgcolor)
+    proc = EasyProcess(cmd)
+    
+    def func():
+        img = disp.waitgrab(timeout=timeout)
+        if wait:
+            proc.sleep(wait)
+            img = disp.grab()
+        return img
+    
+    img = disp.wrap(proc.wrap(func))()
+    if img:
+        img.save(f)
     return (proc.stdout, proc.stderr)
+
 
 parent = docutils.parsers.rst.directives.images.Image
 images_to_delete = []
@@ -105,19 +86,33 @@ class ProgramScreenshotDirective(parent):
                        stdout=flag,
                        stderr=flag,
                        visible=flag,
+                       timeout=unchanged,
+                       bgcolor=unchanged,
                        ))
     def run(self):
-        screen = '1024x768'
+        screen = '1024x768' #default
         if 'screen' in self.options:
             screen = self.options['screen']
         screen = tuple(map(int, screen.split('x')))
 
-        wait = 0.3
+        wait = 0 #default
         if 'wait' in self.options:
             wait = self.options['wait']
-            wait = float(wait)
+        wait = float(wait)
+        
+        timeout = 12    #default
+        if 'timeout' in self.options:
+            timeout = self.options['timeout']
+        timeout = float(timeout)
+        
+        bgcolor = 'white'    
+        if 'bgcolor' in self.options:
+            bgcolor = self.options['bgcolor']
+        
         visible = 'visible' in self.options
+        
         cmd = str(self.arguments[0])
+        
         #d=path.path('shots')
         #if not d.exists():
         #    d.makedirs()
@@ -128,7 +123,7 @@ class ProgramScreenshotDirective(parent):
         fabs = path.path(self.src).dirname() / (f)
         images_to_delete.append(fabs)
 
-        o = prog_shot(cmd, fabs, screen_size=screen, wait=wait, visible=visible)
+        o = prog_shot(cmd, fabs, screen_size=screen, wait=wait, timeout=timeout, visible=visible, bgcolor=bgcolor)
 
         self.arguments[0] = f
         x = parent.run(self)

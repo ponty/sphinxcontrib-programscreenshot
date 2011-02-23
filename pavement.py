@@ -18,20 +18,17 @@ except ImportError, e:
 
 NAME = 'sphinxcontrib-programscreenshot'
 PACKAGE = 'sphinxcontrib'
-SUBPACKAGE = 'sphinxcontrib.programscreenshot'
 URL = 'https://github.com/ponty/sphinxcontrib-programscreenshot'
 DESCRIPTION = 'Sphinx extension to include screenshot of programs'
 
-#try:
-#    sys.path.insert(0, path('.').abspath())
-#    version = None
-#    exec 'from %s import __version__; version = __version__' % SUBPACKAGE
-#    open('.version', 'w').write(version)
-#except ImportError, detail:
-#    print detail
-#    version = open('.version', 'r').read()
-
-version = '0.0.0'
+__version__ = None
+py = path('.') / PACKAGE / 'programscreenshot.py'
+for line in open(py).readlines():
+    if '__version__' in line:
+        exec line
+        break
+assert __version__    
+version = __version__
 
 classifiers = [
     # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
@@ -140,19 +137,19 @@ def sloccount():
 
 @task
 def clean():
-    root=path(__file__).dirname().abspath()
-    ls=[]
-    dls=[]
-    ls+=root.walkfiles('*.pyc')
-    ls+=root.walkfiles('*.html')
-    ls+=root.walkfiles('*.zip')
-    ls+=root.walkfiles('*.css')
-    ls+=root.walkfiles('*.png')
-    ls+=root.walkfiles('*.doctree')
-    ls+=root.walkfiles('*.pickle')
+    root = path(__file__).dirname().abspath()
+    ls = []
+    dls = []
+    ls += root.walkfiles('*.pyc')
+    ls += root.walkfiles('*.html')
+    ls += root.walkfiles('*.zip')
+    ls += root.walkfiles('*.css')
+    ls += root.walkfiles('*.png')
+    ls += root.walkfiles('*.doctree')
+    ls += root.walkfiles('*.pickle')
 
-    dls+=[root / 'dist']
-    dls+=root.listdir('*.egg-info')
+    dls += [root / 'dist']
+    dls += root.listdir('*.egg-info')
 
     for x in ls:
         x.remove()
