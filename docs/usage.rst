@@ -17,9 +17,9 @@ Add ``sphinxcontrib.programscreenshot`` to ``extensions`` list in ``conf.py``::
 Basic
 -------
 
-The main directive is `program-screenshot`:
+The main directive is `program-screenshot`::
 
-.. directive:: program-screenshot
+    .. directive:: program-screenshot
 
 This directive accepts a single string as argument, which is the command
 to execute.  By default, this command string is split using the
