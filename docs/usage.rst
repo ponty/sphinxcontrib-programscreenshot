@@ -71,7 +71,7 @@ Options
 timeout
 ---------
 
-If nothing happens, after timeout (default 60 sec) assertion is raised, 
+If nothing happens, after timeout (default 12 sec) exception is raised, 
 you can change it with this option::
 
       .. program-screenshot:: xmessage timeout

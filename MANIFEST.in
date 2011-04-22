@@ -1,13 +1,9 @@
-include README.*
-include LICENSE
-include CHANGES.*
-recursive-include doc *.rst *.py Makefile
-prune doc/_build
-
-include *.txt
-include *.rst
-include setup.py
+grant docs
+include LICENSE*
 include pavement.py
 include paver-minilib.zip
-
-
+include TODO*
+include CHANGES*
+include README*
+include setup.py
+prune docs/_build

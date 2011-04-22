@@ -1,28 +1,27 @@
-# -*- coding: utf-8 -*-
-
-import sys, os
-import logging
-
 from path import path
-#sys.path.insert(0, (path(__file__).dirname().dirname() ).abspath())
-#from sphinxcontrib.programscreenshot import __version__
-#release = __version__
-#release = 'xxx'
+from setuptools import find_packages
+import logging
+import sys
+import os
+
+def read_project_version(py=None, where='.', exclude=['bootstrap', 'pavement', 'doc', 'docs', 'test', 'tests', ]):
+    if not py:
+        py = path(where) / find_packages(where=where, exclude=exclude)[0]
+    py = path(py)
+    if py.isdir():
+        py = py / '__init__.py'
+    __version__ = None
+    for line in py.lines():
+        if '__version__' in line:
+            exec line
+            break
+    return __version__
+
+release = read_project_version(path('..').abspath() / 'sphinxcontrib' / 'programscreenshot.py')
 
 project = u'sphinxcontrib-programscreenshot'
 copyright = u'2011, ponty'
-author='ponty'
-PACKAGE = 'sphinxcontrib'
-
-__version__ = None
-py = path('..').abspath() / PACKAGE / 'programscreenshot.py'
-for line in open(py).readlines():
-    if '__version__' in line:
-        exec line
-        break
-assert __version__    
-version = __version__
-
+author = 'ponty'
 
 
 #logging.basicConfig(level=logging.DEBUG)
@@ -57,3 +56,8 @@ html_static_path = []
 def setup(app):
     app.add_description_unit('confval', 'confval',
                              'pair: %s; configuration value')
+
+
+# remove blank pages from pdf
+# http://groups.google.com/group/sphinx-dev/browse_thread/thread/92e19267d095412d/d60dcba483c6b13d
+latex_font_size = '10pt,oneside' 
