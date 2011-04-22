@@ -22,7 +22,7 @@ import time
 
 """
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
    
 log = logging.getLogger(__name__)
 log.debug('sphinxcontrib.programscreenshot (version:%s)' % __version__)
