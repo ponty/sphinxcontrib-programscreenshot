@@ -4,7 +4,7 @@ from docutils import nodes
 from docutils.parsers.rst.directives import flag, unchanged
 from easyprocess import EasyProcess
 from pyvirtualdisplay import Display
-from pyvirtualdisplay.smartdisplay import SmartDisplay
+from pyvirtualdisplay.smartdisplay import SmartDisplay, DisplayTimeoutError
 import Image
 import ImageChops
 import docutils.parsers.rst.directives.images
@@ -62,7 +62,10 @@ def prog_shot(cmd, f, wait, timeout, screen_size, visible, bgcolor):
     proc = EasyProcess(cmd)
     
     def func():
-        img = disp.waitgrab(timeout=timeout)
+        try:
+            img = disp.waitgrab(timeout=timeout)
+        except DisplayTimeoutError as e:
+            raise DisplayTimeoutError(str(e) + ' ' + str(proc))
         if wait:
             proc.sleep(wait)
             img = disp.grab()
