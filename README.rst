@@ -18,7 +18,7 @@ Basic usage
 How it works
 ========================
 
-#. start Xvfb headless X server using PyVirtualDisplay_
+#. start Xvfb headless X server using pyvirtualdisplay_
 #. redirect program display to Xvfb server by setting $DISPLAY variable.
 #. wait some seconds
 #. take screenshot by pyscreenshot_ which needs scrot.
@@ -77,6 +77,6 @@ Uninstall
 .. _Xephyr: http://en.wikipedia.org/wiki/Xephyr
 .. _PIL: http://www.pythonware.com/library/pil/
 .. _pyscreenshot: https://github.com/ponty/pyscreenshot
-.. _PyVirtualDisplay: https://github.com/ponty/PyVirtualDisplay
+.. _pyvirtualdisplay: https://github.com/ponty/PyVirtualDisplay
 .. _`sphinxcontrib.programoutput`: http://packages.python.org/sphinxcontrib-programoutput/
 

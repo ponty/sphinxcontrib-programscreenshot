@@ -58,7 +58,7 @@ install_requires = [
     'path.py',
     'PIL',
     'EasyProcess',
-    'PyVirtualDisplay',
+    'pyvirtualdisplay',
     'pyscreenshot',
     'Sphinx>=1.0',
     ]
@@ -97,14 +97,22 @@ options(
 
 if ALL_TASKS_LOADED:
     
-    options.paved.clean.patterns += ['*.pickle', '*.doctree', '*.gz' , 'nosetests.xml', 'sloccount.sc']
+    options.paved.clean.patterns += ['*.pickle', 
+                                     '*.doctree', 
+                                     '*.gz' , 
+                                     'nosetests.xml', 
+                                     'sloccount.sc', 
+                                     '*.pdf','*.tex', 
+                                     '*.png',
+                                     ]
     
     options.paved.dist.manifest.include.remove('distribute_setup.py')
     
     
     @task
-    @needs('sloccount', 'html', 'sdist', 'nose')
-    def hudson():
+    @needs('sloccount', 'html', 'pdf', 'sdist', 'nose')
+    def alltest():
+        'all tasks to check'
         pass
     
     @task
@@ -112,3 +120,13 @@ if ALL_TASKS_LOADED:
     def html():
         pass
 
+    @task
+    @needs('sphinxcontrib.paverutils.pdf')
+    def pdf():
+        try:
+            fpdf = list(path('docs/_build/latex').walkfiles('*.pdf'))[0]
+            d=path('docs/_build/html')
+            d.makedirs()
+            fpdf.copy(d)
+        except:
+            raise BuildFailure("pdf not found!")
