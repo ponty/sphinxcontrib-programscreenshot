@@ -157,22 +157,22 @@ screen
 
 Using the option ``screen`` you can set the screen size, default is 1024x768::
 
-   .. program-screenshot:: xedit
+   .. program-screenshot:: gedit
          :screen:   400x400
 
 The above snippet would render like this:
 
-.. program-screenshot:: xedit
+.. program-screenshot:: gedit
      :screen:   400x400
 
 Other resolution::
 
-   .. program-screenshot:: xedit
+   .. program-screenshot:: gedit
          :screen:   100x100
 
 The above snippet would render like this:
 
-.. program-screenshot:: xedit
+.. program-screenshot:: gedit
      :screen:   100x100
 
 Image options
