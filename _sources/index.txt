@@ -1,9 +1,7 @@
-.. default-domain:: rst
-.. highlight:: rest
+**sphinxcontrib-programscreenshot**
 
-This Sphinx_ 1.0 extension executes programs during the build step and
-includes their screenshot into the documentation.
-
+:Date: |today|
+:PDF: `sphinxcontrib-programscreenshot.pdf <sphinxcontrib-programscreenshot.pdf>`_
 
 Table of Contents
 ------------------------
@@ -14,6 +12,6 @@ Table of Contents
    readme
    usage
    todo
-   changes
-
+   dev
+   
 .. _Sphinx: http://sphinx.pocoo.org/latest

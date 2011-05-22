@@ -54,7 +54,6 @@
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>Add <tt class="docutils literal"><span class="pre">sphinxcontrib.programscreenshot</span></tt> to <tt class="docutils literal"><span class="pre">extensions</span></tt> list in <tt class="docutils literal"><span class="pre">conf.py</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
-              <span class="s">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
               <span class="s">&#39;sphinxcontrib.programscreenshot&#39;</span><span class="p">,</span>
               <span class="p">]</span>
 </pre></div>
@@ -176,13 +175,13 @@ This can be used to skip splash or loading screen.</p>
 <div class="section" id="screen">
 <h3>screen<a class="headerlink" href="#screen" title="Permalink to this headline">¶</a></h3>
 <p>Using the option <tt class="docutils literal"><span class="pre">screen</span></tt> you can set the screen size, default is 1024x768:</p>
-<div class="highlight-python"><pre>.. program-screenshot:: xedit
+<div class="highlight-python"><pre>.. program-screenshot:: gedit
       :screen:   400x400</pre>
 </div>
 <p>The above snippet would render like this:</p>
 <img alt="_images/screenshot_id8.png" src="_images/screenshot_id8.png" />
 <p>Other resolution:</p>
-<div class="highlight-python"><pre>.. program-screenshot:: xedit
+<div class="highlight-python"><pre>.. program-screenshot:: gedit
       :screen:   100x100</pre>
 </div>
 <p>The above snippet would render like this:</p>
@@ -192,16 +191,15 @@ This can be used to skip splash or loading screen.</p>
 <div class="section" id="image-options">
 <h2>Image options<a class="headerlink" href="#image-options" title="Permalink to this headline">¶</a></h2>
 <p>Same as in <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#image">http://docutils.sourceforge.net/docs/ref/rst/directives.html#image</a></p>
-<div class="section" id="scale">
-<h3>scale<a class="headerlink" href="#scale" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="scale-alt">
+<h3>scale, alt<a class="headerlink" href="#scale-alt" title="Permalink to this headline">¶</a></h3>
 <p>Example:</p>
 <div class="highlight-python"><pre>.. program-screenshot:: xmessage Image options
      :scale: 200 %
-     :alt: alternate text
-     :align: right</pre>
+     :alt: alternate text</pre>
 </div>
 <p>The above snippet would render like this:</p>
-<a class="reference internal image-reference" href="_images/screenshot_id10.png"><img alt="alternate text" class="align-right" src="_images/screenshot_id10.png" style="width: 250.0px; height: 108.0px;" /></a>
+<a class="reference internal image-reference" href="_images/screenshot_id10.png"><img alt="alternate text" src="_images/screenshot_id10.png" style="width: 218.0px; height: 108.0px;" /></a>
 </div>
 <div class="section" id="height-width">
 <h3>height, width<a class="headerlink" href="#height-width" title="Permalink to this headline">¶</a></h3>
@@ -212,6 +210,15 @@ This can be used to skip splash or loading screen.</p>
 </div>
 <p>The above snippet would render like this:</p>
 <img alt="_images/screenshot_id11.png" src="_images/screenshot_id11.png" style="width: 100px; height: 100px;" />
+</div>
+<div class="section" id="align">
+<h3>align<a class="headerlink" href="#align" title="Permalink to this headline">¶</a></h3>
+<p>Example:</p>
+<div class="highlight-python"><pre>.. program-screenshot:: xmessage align
+     :align: right</pre>
+</div>
+<p>The above snippet would render like this:</p>
+<img alt="_images/screenshot_id12.png" class="align-right" src="_images/screenshot_id12.png" />
 </div>
 </div>
 </div>
@@ -239,8 +246,9 @@ This can be used to skip splash or loading screen.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#image-options">Image options</a><ul>
-<li><a class="reference internal" href="#scale">scale</a></li>
+<li><a class="reference internal" href="#scale-alt">scale, alt</a></li>
 <li><a class="reference internal" href="#height-width">height, width</a></li>
+<li><a class="reference internal" href="#align">align</a></li>
 </ul>
 </li>
 </ul>

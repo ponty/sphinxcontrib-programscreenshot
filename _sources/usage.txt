@@ -8,7 +8,6 @@ Configuration
 Add ``sphinxcontrib.programscreenshot`` to ``extensions`` list in ``conf.py``::
 
 		extensions = [
-		              'sphinx.ext.autodoc',
 		              'sphinxcontrib.programscreenshot',
 		              ]
 
@@ -158,22 +157,22 @@ screen
 
 Using the option ``screen`` you can set the screen size, default is 1024x768::
 
-   .. program-screenshot:: xedit
+   .. program-screenshot:: gedit
          :screen:   400x400
 
 The above snippet would render like this:
 
-.. program-screenshot:: xedit
+.. program-screenshot:: gedit
      :screen:   400x400
 
 Other resolution::
 
-   .. program-screenshot:: xedit
+   .. program-screenshot:: gedit
          :screen:   100x100
 
 The above snippet would render like this:
 
-.. program-screenshot:: xedit
+.. program-screenshot:: gedit
      :screen:   100x100
 
 Image options
@@ -183,7 +182,7 @@ Same as in http://docutils.sourceforge.net/docs/ref/rst/directives.html#image
 
 
 ---------------
-scale
+scale, alt
 ---------------
 
 Example::
@@ -191,14 +190,12 @@ Example::
       .. program-screenshot:: xmessage Image options
            :scale: 200 %
            :alt: alternate text
-           :align: right
 
 The above snippet would render like this:
 
 .. program-screenshot:: xmessage Image options
            :scale: 200 %
            :alt: alternate text
-           :align: right
 
 ---------------
 height, width
@@ -217,4 +214,17 @@ The above snippet would render like this:
            :width:  100 px
 
 
+---------------
+align
+---------------
+
+Example::
+
+      .. program-screenshot:: xmessage align 
+           :align: right
+
+The above snippet would render like this:
+
+.. program-screenshot:: xmessage align 
+           :align: right
 
