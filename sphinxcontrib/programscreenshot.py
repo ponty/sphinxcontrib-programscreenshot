@@ -68,31 +68,12 @@ class ProgramScreenshotDirective(parent):
                        bgcolor=directives.unchanged,
                        ))
     def run(self):
-#        screen = '1024x768' #default
-#        if 'screen' in self.options:
-#            screen = self.options['screen']
         screen = self.options.get('screen', '1024x768')
         screen = tuple(map(int, screen.split('x')))
-
-        #wait = 0 #default
-        #if 'wait' in self.options:
-        #    wait = self.options['wait']
-        #wait = float(wait)
         wait = self.options.get('wait', 0)
-        
-        #timeout = 12    #default
-        #if 'timeout' in self.options:
-        #    timeout = self.options['timeout']
-        #timeout = float(timeout)
         timeout = self.options.get('timeout', 12)
-        
-        #bgcolor = 'white'    
-        #if 'bgcolor' in self.options:
-        #    bgcolor = self.options['bgcolor']
         bgcolor = self.options.get('bgcolor', 'white')
-        
         visible = 'visible' in self.options
-        
         cmd = str(self.arguments[0])
         
         global image_id
@@ -101,7 +82,8 @@ class ProgramScreenshotDirective(parent):
         fabs = path.path(self.src).dirname() / (f)
         images_to_delete.append(fabs)
 
-        o = prog_shot(cmd, fabs, screen_size=screen, wait=wait, timeout=timeout, visible=visible, bgcolor=bgcolor)
+        o = prog_shot(cmd, fabs, screen_size=screen, wait=wait, 
+                      timeout=timeout, visible=visible, bgcolor=bgcolor)
 
         self.arguments[0] = f
         x = parent.run(self)
