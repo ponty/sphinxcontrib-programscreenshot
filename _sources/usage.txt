@@ -125,31 +125,31 @@ wait
 Use ``wait`` to wait at least N seconds after first window is displayed.
 This can be used to skip splash or loading screen.
 
-``update-manager`` is loading data by start (without ``wait``):: 
+``mintinstall`` is loading data by start (without ``wait``):: 
     
-    .. program-screenshot:: update-manager
+    .. program-screenshot:: mintinstall
          :prompt:
          :scale: 50 %
 
 The above snippet would render like this:
 
-.. program-screenshot:: update-manager
+.. program-screenshot:: mintinstall
          :prompt:
          :scale: 50 %
 
-``update-manager`` after loading data (with ``wait``):: 
+``mintinstall`` after loading data (with ``wait``):: 
 
-    .. program-screenshot:: update-manager
+    .. program-screenshot:: mintinstall
          :prompt:
          :scale: 50 %
-         :wait: 5
+         :wait: 10
 
 The above snippet would render like this:
 
-.. program-screenshot:: update-manager
+.. program-screenshot:: mintinstall
          :prompt:
          :scale: 50 %
-         :wait: 5
+         :wait: 10
 
 --------------
 screen

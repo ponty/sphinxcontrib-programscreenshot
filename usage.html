@@ -3,17 +3,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Usage &mdash; sphinxcontrib-programscreenshot v0.0.3 documentation</title>
+    <title>Usage &mdash; sphinxcontrib-programscreenshot 0.0.4 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.3',
+        VERSION:     '0.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="sphinxcontrib-programscreenshot v0.0.3 documentation" href="index.html" />
+    <link rel="top" title="sphinxcontrib-programscreenshot 0.0.4 documentation" href="index.html" />
     <link rel="next" title="TODO" href="todo.html" />
     <link rel="prev" title="About" href="readme.html" /> 
   </head>
@@ -39,7 +42,7 @@
         <li class="right" >
           <a href="readme.html" title="About"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">sphinxcontrib-programscreenshot v0.0.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">sphinxcontrib-programscreenshot 0.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -150,27 +153,27 @@ you can change it with this option:</p>
 <h3>wait<a class="headerlink" href="#wait" title="Permalink to this headline">¶</a></h3>
 <p>Use <tt class="docutils literal"><span class="pre">wait</span></tt> to wait at least N seconds after first window is displayed.
 This can be used to skip splash or loading screen.</p>
-<p><tt class="docutils literal"><span class="pre">update-manager</span></tt> is loading data by start (without <tt class="docutils literal"><span class="pre">wait</span></tt>):</p>
-<div class="highlight-python"><pre>.. program-screenshot:: update-manager
+<p><tt class="docutils literal"><span class="pre">mintinstall</span></tt> is loading data by start (without <tt class="docutils literal"><span class="pre">wait</span></tt>):</p>
+<div class="highlight-python"><pre>.. program-screenshot:: mintinstall
      :prompt:
      :scale: 50 %</pre>
 </div>
 <p>The above snippet would render like this:</p>
-<div class="highlight-python"><pre>$ update-manager
+<div class="highlight-python"><pre>$ mintinstall
 </pre>
 </div>
-<a class="reference internal image-reference" href="_images/screenshot_id6.png"><img alt="_images/screenshot_id6.png" src="_images/screenshot_id6.png" style="width: 300.0px; height: 300.0px;" /></a>
-<p><tt class="docutils literal"><span class="pre">update-manager</span></tt> after loading data (with <tt class="docutils literal"><span class="pre">wait</span></tt>):</p>
-<div class="highlight-python"><pre>.. program-screenshot:: update-manager
+<a class="reference internal image-reference" href="_images/screenshot_id6.png"><img alt="_images/screenshot_id6.png" src="_images/screenshot_id6.png" style="width: 200.0px; height: 124.5px;" /></a>
+<p><tt class="docutils literal"><span class="pre">mintinstall</span></tt> after loading data (with <tt class="docutils literal"><span class="pre">wait</span></tt>):</p>
+<div class="highlight-python"><pre>.. program-screenshot:: mintinstall
      :prompt:
      :scale: 50 %
-     :wait: 5</pre>
+     :wait: 10</pre>
 </div>
 <p>The above snippet would render like this:</p>
-<div class="highlight-python"><pre>$ update-manager
+<div class="highlight-python"><pre>$ mintinstall
 </pre>
 </div>
-<a class="reference internal image-reference" href="_images/screenshot_id7.png"><img alt="_images/screenshot_id7.png" src="_images/screenshot_id7.png" style="width: 300.0px; height: 300.0px;" /></a>
+<a class="reference internal image-reference" href="_images/screenshot_id7.png"><img alt="_images/screenshot_id7.png" src="_images/screenshot_id7.png" style="width: 380.0px; height: 300.0px;" /></a>
 </div>
 <div class="section" id="screen">
 <h3>screen<a class="headerlink" href="#screen" title="Permalink to this headline">¶</a></h3>
@@ -269,7 +272,7 @@ This can be used to skip splash or loading screen.</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -295,12 +298,12 @@ This can be used to skip splash or loading screen.</p>
         <li class="right" >
           <a href="readme.html" title="About"
              >previous</a> |</li>
-        <li><a href="index.html">sphinxcontrib-programscreenshot v0.0.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">sphinxcontrib-programscreenshot 0.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, ponty.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>
