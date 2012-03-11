@@ -12,6 +12,5 @@ Table of Contents
    readme
    usage
    todo
-   dev
    
 .. _Sphinx: http://sphinx.pocoo.org/latest

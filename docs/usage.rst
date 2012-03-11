@@ -129,18 +129,21 @@ This can be used to skip splash or loading screen.
     
     .. program-screenshot:: mintinstall
          :prompt:
+         :timeout:  60
          :scale: 50 %
 
 The above snippet would render like this:
 
 .. program-screenshot:: mintinstall
          :prompt:
+         :timeout:  60
          :scale: 50 %
 
 ``mintinstall`` after loading data (with ``wait``):: 
 
     .. program-screenshot:: mintinstall
          :prompt:
+         :timeout:  60
          :scale: 50 %
          :wait: 10
 
@@ -148,6 +151,7 @@ The above snippet would render like this:
 
 .. program-screenshot:: mintinstall
          :prompt:
+         :timeout:  60
          :scale: 50 %
          :wait: 10
 
