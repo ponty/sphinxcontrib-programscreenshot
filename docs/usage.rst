@@ -49,14 +49,14 @@ waiting
 The program is waiting until something is displayed
 (test window is displayed after 3 sec)::
 
-   .. program-screenshot:: python tests/tkmsgbox.py 3
+   .. program-screenshot:: python tests/msgbox.py 3
          :prompt:
          :stdout:
          :stderr:
 
 The above snippet would render like this:
 
-.. program-screenshot:: python tests/tkmsgbox.py 3
+.. program-screenshot:: python tests/msgbox.py 3
      :prompt:
      :stdout:
      :stderr:
@@ -96,12 +96,12 @@ stdout
 
 Use option ``stdout`` to include anything from the standard output stream of the invoked program::
 
-   .. program-screenshot:: python tests/tkmsgbox.py 0
+   .. program-screenshot:: python tests/msgbox.py 0
          :stdout:
 
 The above snippet would render like this:
 
-.. program-screenshot:: python tests/tkmsgbox.py 0
+.. program-screenshot:: python tests/msgbox.py 0
      :stdout:
 
 --------------
@@ -110,12 +110,12 @@ stderr
 
 Use option ``stderr`` to include anything from the standard error stream of the invoked program::
 
-   .. program-screenshot:: python tests/tkmsgbox.py 0
+   .. program-screenshot:: python tests/msgbox.py 0
          :stderr:
 
 The above snippet would render like this:
 
-.. program-screenshot:: python tests/tkmsgbox.py 0
+.. program-screenshot:: python tests/msgbox.py 0
       :stderr:
 
 --------------
@@ -161,22 +161,22 @@ screen
 
 Using the option ``screen`` you can set the screen size, default is 1024x768::
 
-   .. program-screenshot:: gedit
+   .. program-screenshot:: xedit
          :screen:   400x400
 
 The above snippet would render like this:
 
-.. program-screenshot:: gedit
+.. program-screenshot:: xedit
      :screen:   400x400
 
 Other resolution::
 
-   .. program-screenshot:: gedit
+   .. program-screenshot:: xedit
          :screen:   100x100
 
 The above snippet would render like this:
 
-.. program-screenshot:: gedit
+.. program-screenshot:: xedit
      :screen:   100x100
 
 Image options
