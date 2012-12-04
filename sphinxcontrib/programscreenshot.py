@@ -25,6 +25,10 @@ class ProgramScreenshotError(Exception):
     pass
 
 
+def get_src(self):
+    return self.state_machine.get_source(self.lineno)
+
+
 def prog_shot(cmd, f, wait, timeout, screen_size, visible, bgcolor):
     '''start process in headless X and create screenshot after 'wait' sec.
     Repeats screenshot until it is not empty if 'repeat_if_empty'=True.
@@ -84,7 +88,7 @@ class ProgramScreenshotDirective(parent):
         global image_id
         f = 'screenshot_id%s.png' % (str(image_id))
         image_id += 1
-        fabs = path.path(self.src).dirname() / (f)
+        fabs = path.path(get_src(self)).dirname() / (f)
         images_to_delete.append(fabs)
 
         o = prog_shot(cmd, fabs, screen_size=screen, wait=wait,
