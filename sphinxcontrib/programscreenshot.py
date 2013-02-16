@@ -40,6 +40,8 @@ def prog_shot(cmd, f, wait, timeout, screen_size, visible, bgcolor, cwd=None):
     :param wait: int
     '''
     disp = SmartDisplay(visible=visible, size=screen_size, bgcolor=bgcolor)
+    disp.pyscreenshot_backend = None
+    disp.pyscreenshot_childprocess = True
     proc = EasyProcess(cmd, cwd=cwd)
 
     def func():
