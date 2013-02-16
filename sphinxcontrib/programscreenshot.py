@@ -88,7 +88,7 @@ class ProgramScreenshotDirective(parent):
         cmd = str(self.arguments[0])
 
         global image_id
-        f = 'screenshot_id%s.png' % (str(image_id))
+        f = 'generated_screenshot_id%s.png' % (str(image_id))
         image_id += 1
         fabs = path.path(get_src(self)).dirname() / (f)
         images_to_delete.append(fabs)
