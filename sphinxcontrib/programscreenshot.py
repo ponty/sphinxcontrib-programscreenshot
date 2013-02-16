@@ -29,7 +29,7 @@ def get_src(self):
     return self.state_machine.get_source(self.lineno)
 
 
-def prog_shot(cmd, f, wait, timeout, screen_size, visible, bgcolor):
+def prog_shot(cmd, f, wait, timeout, screen_size, visible, bgcolor, cwd=None):
     '''start process in headless X and create screenshot after 'wait' sec.
     Repeats screenshot until it is not empty if 'repeat_if_empty'=True.
 
@@ -40,7 +40,7 @@ def prog_shot(cmd, f, wait, timeout, screen_size, visible, bgcolor):
     :param wait: int
     '''
     disp = SmartDisplay(visible=visible, size=screen_size, bgcolor=bgcolor)
-    proc = EasyProcess(cmd)
+    proc = EasyProcess(cmd, cwd=cwd)
 
     def func():
         try:
@@ -74,6 +74,7 @@ class ProgramScreenshotDirective(parent):
                        visible=directives.flag,
                        timeout=directives.nonnegative_int,
                        bgcolor=directives.unchanged,
+                       directory=directives.unchanged,
                        ))
 
     def run(self):
@@ -82,6 +83,7 @@ class ProgramScreenshotDirective(parent):
         wait = self.options.get('wait', 0)
         timeout = self.options.get('timeout', 12)
         bgcolor = self.options.get('bgcolor', 'white')
+        directory = self.options.get('directory', None)
         visible = 'visible' in self.options
         cmd = str(self.arguments[0])
 
@@ -92,7 +94,7 @@ class ProgramScreenshotDirective(parent):
         images_to_delete.append(fabs)
 
         o = prog_shot(cmd, fabs, screen_size=screen, wait=wait,
-                      timeout=timeout, visible=visible, bgcolor=bgcolor)
+                      timeout=timeout, visible=visible, bgcolor=bgcolor, cwd=directory)
 
         self.arguments[0] = f
         x = parent.run(self)

@@ -117,6 +117,20 @@ The above snippet would render like this:
 
 .. program-screenshot:: python tests/msgbox.py 0
       :stderr:
+      
+--------------
+directory
+--------------
+
+Use option ``directory`` to set the working directory::
+
+   .. program-screenshot:: python msgbox.py 0
+         :directory: tests
+
+The above snippet would render like this:
+
+.. program-screenshot:: python msgbox.py 0
+      :directory: tests
 
 --------------
 wait
