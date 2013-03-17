@@ -139,23 +139,23 @@ wait
 Use ``wait`` to wait at least N seconds after first window is displayed.
 This can be used to skip splash or loading screen.
 
-``mintinstall`` is loading data by start (without ``wait``):: 
+Stopwatch script without ``wait``:: 
     
-    .. program-screenshot:: mintinstall
+    .. program-screenshot::  xterm -e "python -c 'for i in range(100): print i; i += 1; from time import sleep;sleep(1)'"
          :prompt:
          :timeout:  60
          :scale: 50 %
 
 The above snippet would render like this:
 
-.. program-screenshot:: mintinstall
+.. program-screenshot::  xterm -e "python -c 'for i in range(100): print i; i += 1; from time import sleep;sleep(1)'"
          :prompt:
          :timeout:  60
          :scale: 50 %
 
-``mintinstall`` after loading data (with ``wait``):: 
+Stopwatch script with ``wait``:: 
 
-    .. program-screenshot:: mintinstall
+    .. program-screenshot::  xterm -e "python -c 'for i in range(100): print i; i += 1; from time import sleep;sleep(1)'"
          :prompt:
          :timeout:  60
          :scale: 50 %
@@ -163,7 +163,7 @@ The above snippet would render like this:
 
 The above snippet would render like this:
 
-.. program-screenshot:: mintinstall
+.. program-screenshot::  xterm -e "python -c 'for i in range(100): print i; i += 1; from time import sleep;sleep(1)'"
          :prompt:
          :timeout:  60
          :scale: 50 %
