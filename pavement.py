@@ -11,7 +11,6 @@ from paved.util import *
 from paved.docs import *
 from paved.pycheck import *
 from paved.pkg import *
-from sphinxcontrib import paverutils
 
 # get info from setup.py
 setup_py = ''.join(
@@ -23,10 +22,10 @@ options(
         docroot='docs',
         builddir="_build",
     ),
-    pdf=Bunch(
-        builddir='_build',
-        builder='latex',
-    ),
+#    pdf=Bunch(
+#        builddir='_build',
+#        builder='latex',
+#    ),
 )
 
 options.paved.clean.rmdirs += ['.tox',
@@ -61,30 +60,6 @@ options.paved.dist.manifest.include.add('requirements.txt')
 def alltest():
     'all tasks to check'
     pass
-
-
-@task
-@needs('sphinxcontrib.paverutils.html')
-def html():
-    pass
-
-
-@task
-@needs('sphinxcontrib.paverutils.pdf')
-def pdf():
-    try:
-        fpdf = list(path('docs/_build/latex').walkfiles('*.pdf'))[0]
-        d = path('docs/_build/html')
-        d.makedirs()
-        fpdf.copy(d)
-    except:
-        raise BuildFailure("pdf not found!")
-
-
-@task
-def tox():
-    '''Run tox.'''
-    sh('tox')
 
 
 @task
